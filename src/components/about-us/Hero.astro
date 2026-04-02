@@ -1,0 +1,101 @@
+<div class="hero bg-base-200 min-h-[40vh] relative overflow-hidden">
+  <!-- Subtle animated background accent -->
+  <div class="bg-accent-line" aria-hidden="true"></div>
+
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+      <h1 class="text-5xl font-bold hero-heading">Who We Are</h1>
+      <p class="py-6 hero-subtext">
+        The people and purpose behind your finances
+      </p>
+      <button class="btn btn-outline hero-btn">
+        <a href="/raj-site/contact">Work With Us</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Fade + slide up on load */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Subtle horizontal line that draws itself */
+  @keyframes lineGrow {
+    from { width: 0; opacity: 0; }
+    to   { width: 48px; opacity: 1; }
+  }
+
+  .hero-heading {
+    animation: fadeUp 0.6s ease both;
+    animation-delay: 0.1s;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Small decorative underline beneath the heading */
+  .hero-heading::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.25;
+    margin: 8px auto 0;
+    animation: lineGrow 0.5s ease both;
+    animation-delay: 0.55s;
+  }
+
+  .hero-subtext {
+    animation: fadeUp 0.6s ease both;
+    animation-delay: 0.25s;
+  }
+
+  .hero-btn {
+    animation: fadeUp 0.6s ease both;
+    animation-delay: 0.4s;
+
+    /* Smooth hover lift */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-btn:active {
+    transform: translateY(0px);
+    box-shadow: none;
+    transition-duration: 0.08s;
+  }
+
+  /* Soft drifting background orb for depth */
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%       { transform: translate(12px, -10px) scale(1.04); }
+  }
+
+  .bg-accent-line {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 60% 50% at 70% 60%,
+        rgba(100, 120, 200, 0.07) 0%,
+        transparent 80%
+    );
+    animation: drift 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+</style>

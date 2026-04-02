@@ -1,0 +1,210 @@
+<section class="py-20 px-4 bg-base-200">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12 section-header">
+      <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+      <p class="text-base-content/60 text-lg max-w-2xl mx-auto">From day-to-day bookkeeping to complex tax compliance — we cover every aspect of your financial operations.</p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="flex flex-wrap justify-center gap-6">
+
+      <div class="service-card card bg-base-100 shadow-sm w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div class="card-body gap-4">
+          <h2 class="card-title text-xl">Financial Accounting</h2>
+          <ul class="text-sm text-base-content/70 space-y-2">
+            <li>Bookkeeping & Ledger Maintenance</li>
+            <li>Financial Statement Preparation</li>
+            <li>Bank Reconciliation</li>
+            <li>Accounts Payable & Receivable Management</li>
+            <li>Payroll Processing</li>
+            <li>Tax Preparation & Compliance</li>
+            <li>Audit Support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card card bg-base-100 shadow-sm w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div class="card-body gap-4">
+          <h2 class="card-title text-xl">Cost Accounting</h2>
+          <ul class="text-sm text-base-content/70 space-y-2">
+            <li>Cost Sheet Preparation</li>
+            <li>Standard Costing & Variance Analysis</li>
+            <li>Job & Process Costing</li>
+            <li>Marginal Costing & CVP Analysis</li>
+            <li>Inventory Valuation</li>
+            <li>Budget Preparation & Control</li>
+            <li>Profitability Analysis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card card bg-base-100 shadow-sm w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div class="card-body gap-4">
+          <h2 class="card-title text-xl">GST Services</h2>
+          <ul class="text-sm text-base-content/70 space-y-2">
+            <li>GST Registration</li>
+            <li>GST Return Filing</li>
+            <li>Input Tax Credit (ITC) Reconciliation</li>
+            <li>GST Audit & Annual Return</li>
+            <li>E-Invoicing & E-Way Bill Compliance</li>
+            <li>GST Notice & Litigation Support</li>
+            <li>GST Health Check</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card card bg-base-100 shadow-sm w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div class="card-body gap-4">
+          <h2 class="card-title text-xl">Income Tax</h2>
+          <ul class="text-sm text-base-content/70 space-y-2">
+            <li>Income Tax Return Filing</li>
+            <li>Tax Planning & Advisory</li>
+            <li>TDS Compliance & Return Filing</li>
+            <li>Advance Tax Computation</li>
+            <li>Income Tax Notice Handling</li>
+            <li>Form 15CA/15CB Assistance</li>
+            <li>Tax Audit Support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card card bg-base-100 shadow-sm w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <div class="card-body gap-4">
+          <h2 class="card-title text-xl">MIS Reporting</h2>
+          <ul class="text-sm text-base-content/70 space-y-2">
+            <li>Monthly MIS Report Preparation</li>
+            <li>Cash Flow Statements & Projections</li>
+            <li>Budget vs Actual Analysis</li>
+            <li>KPI Dashboards & Scorecards</li>
+            <li>Debtor & Creditor Aging Reports</li>
+            <li>Profitability & Cost Center Reports</li>
+            <li>Custom Management Reports</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Section header fade-up on scroll ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .section-header.visible {
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  /* ── Cards: start hidden, animate in via JS ── */
+  .service-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        box-shadow 0.25s ease;
+  }
+
+  .service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Card hover: lift + left accent border ── */
+  .service-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 3px;
+    background: oklch(var(--p));
+    border-radius: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+    top: 8px;
+    bottom: 8px;
+  }
+
+  /* Card needs relative for the ::before to work */
+  .service-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Icon bounce on card hover ── */
+  .card-icon {
+    font-size: 1.6rem;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .service-card:hover .card-icon {
+    transform: scale(1.2) rotate(-5deg);
+  }
+
+  /* ── List items stagger on hover ── */
+  .service-card ul li {
+    transition: padding-left 0.2s ease, color 0.2s ease;
+  }
+
+  .service-card:hover ul li {
+    padding-left: 6px;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .section-header,
+    .card-icon,
+    .service-card ul li {
+      animation: none;
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+  );
+
+  // Stagger cards as they scroll into view
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    (card as HTMLElement).style.transitionDelay = `${i * 80}ms`;
+    observer.observe(card);
+  });
+
+  document.querySelectorAll('.section-header').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

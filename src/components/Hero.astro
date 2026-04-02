@@ -1,0 +1,104 @@
+---
+import HeroBackground from '../assets/hero-background.jpg'
+---
+
+<div
+    class="hero min-h-screen hero-section"
+    style={`background-image: url(${HeroBackground.src});`}
+>
+  <div class="hero-overlay bg-black/60 overlay-animated"></div>
+  <div class="hero-content text-neutral-content text-center">
+    <div class="max-w-md hero-inner">
+      <h1 class="mb-5 text-5xl font-bold hero-heading">
+        Stop Worrying About Your Finances
+      </h1>
+      <p class="mb-5 hero-subtext">
+        We stress over your finances so you don't have to.
+      </p>
+      <button class="btn btn-primary hero-btn">
+        <a href="/raj-site/contact">Contact Us</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Entrance animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Background image slowly zooms in — classic Ken Burns */
+  @keyframes bgZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1); }
+  }
+
+  /* Overlay fades in slightly after bg, softening the reveal */
+  @keyframes overlayFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    animation: bgZoom 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .overlay-animated {
+    animation: overlayFade 1s ease 0.3s both;
+  }
+
+  .hero-heading {
+    animation: fadeUp 0.7s ease 0.6s both;
+  }
+
+  .hero-subtext {
+    animation: fadeUp 0.7s ease 0.85s both;
+  }
+
+  .hero-btn {
+    animation: fadeUp 0.7s ease 1.05s both;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+  }
+
+  /* ── Button interactions ── */
+  .hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    filter: brightness(1.08);
+  }
+
+  .hero-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    transition-duration: 0.08s;
+  }
+
+  /* ── Subtle parallax on scroll ── */
+  .hero-section {
+    background-attachment: fixed;
+  }
+
+  /* ── Reduced motion fallback ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-section,
+    .overlay-animated,
+    .hero-heading,
+    .hero-subtext,
+    .hero-btn {
+      animation: none;
+    }
+  }
+</style>

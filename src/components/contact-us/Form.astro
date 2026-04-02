@@ -1,0 +1,140 @@
+<div class="min-h-screen flex items-center justify-center bg-base-200 min-w-screen">
+<form
+        class="w-full max-w-xl p-6 flex flex-col gap-1"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        novalidate
+>
+    <input type="hidden" name="access_key" value="8800f906-ef79-4a05-8913-260e0300b5cb" />
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+    <h2 class="text-5xl font-semibold mb-2">Contact Us</h2>
+
+    <!-- Full Name -->
+    <fieldset class="fieldset">
+        <label class="label" for="name">Full Name</label>
+        <input
+                id="name"
+                name="name"
+                class="input validator w-full"
+                placeholder="Jane Smith"
+                autocomplete="name"
+                required
+        />
+        <p class="validator-hint hidden">Required</p>
+    </fieldset>
+
+    <!-- Business Name -->
+    <fieldset class="fieldset">
+        <label class="label" for="business">Business Name <span class="text-base-content/50 text-xs">(optional)</span></label>
+        <input
+                id="business"
+                name="business"
+                class="input w-full"
+                placeholder="Acme Corp"
+                autocomplete="organization"
+        />
+    </fieldset>
+
+    <!-- Email -->
+    <fieldset class="fieldset">
+        <label class="label" for="email">Email</label>
+        <input
+                id="email"
+                name="email"
+                type="email"
+                class="input validator w-full"
+                placeholder="jane@example.com"
+                autocomplete="email"
+                required
+        />
+        <p class="validator-hint hidden">Enter a valid email address</p>
+    </fieldset>
+
+    <!-- Phone -->
+    <fieldset class="fieldset">
+        <label class="label" for="phone">Phone Number</label>
+        <div class="flex items-center gap-2">
+            <span class="text-base-content/60 text-sm select-none">e.g. +91</span>
+            <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    class="input validator tabular-nums w-full"
+                    placeholder="98765 43210"
+                    autocomplete="tel"
+                    pattern="^\+?[0-9]{1,4}?[-.\s]?\(?[0-9]{1,3}?\)?[-.\s]?[0-9]{3,4}[-.\s]?[0-9]{4}$"
+                    required
+            />
+        </div>
+        <p class="validator-hint">Enter a valid phone number (e.g. +91 98765 43210)</p>
+    </fieldset>
+
+    <!-- Service -->
+    <fieldset class="fieldset">
+        <label class="label" for="service">Service Interested In</label>
+        <select id="service" name="service" class="select validator w-full" required>
+            <option disabled selected value="">Select a service...</option>
+            <option value="tax">Financial Accounting</option>
+            <option value="bookkeeping">Cost Accounting</option>
+            <option value="payroll">GST</option>
+            <option value="audit">Income Tax</option>
+            <option value="advisory">MIS Reporting</option>
+            <option value="other">Other</option>
+        </select>
+        <p class="validator-hint">Please select a service</p>
+    </fieldset>
+
+    <!-- Preferred Contact Method -->
+    <fieldset class="fieldset">
+        <label class="label" for="contact-method">Preferred Contact Method</label>
+        <select id="contact-method" name="contact_method" class="select validator w-full" required>
+            <option disabled selected value="">Choose...</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+        </select>
+        <p class="validator-hint">Please select a contact method</p>
+    </fieldset>
+
+    <!-- Best Time to Call (shown only if Phone is selected) -->
+    <fieldset class="fieldset" id="call-time-field" style="display:none">
+        <label class="label" for="call-time">Best Time to Call</label>
+        <select id="call-time" name="call_time" class="select w-full">
+            <option disabled selected value="">Choose...</option>
+            <option value="morning">Morning (9am–12pm)</option>
+            <option value="afternoon">Afternoon (12pm–5pm)</option>
+            <option value="evening">Evening (5pm–8pm)</option>
+        </select>
+    </fieldset>
+
+    <!-- Message -->
+    <fieldset class="fieldset">
+        <label class="label" for="message">Message</label>
+        <textarea
+                id="message"
+                name="message"
+                class="textarea validator w-full"
+                placeholder="How can we help you?"
+                rows="4"
+                required
+                minlength="10"
+        ></textarea>
+        <p class="validator-hint">Please enter a message (at least 10 characters)</p>
+    </fieldset>
+
+    <div class="flex gap-2 mt-4">
+        <button class="btn btn-primary flex-1" type="submit">Submit</button>
+        <button class="btn btn-ghost" type="reset">Reset</button>
+    </div>
+</form>
+</div>
+<script>
+    const contactMethod = document.getElementById("contact-method") as HTMLSelectElement;
+    const callTimeField = document.getElementById("call-time-field") as HTMLElement;
+    const callTimeSelect = document.getElementById("call-time") as HTMLSelectElement;
+
+    contactMethod.addEventListener("change", () => {
+        const isPhone = contactMethod.value === "phone";
+        callTimeField.style.display = isPhone ? "block" : "none";
+        callTimeSelect.required = isPhone;
+    });
+</script>

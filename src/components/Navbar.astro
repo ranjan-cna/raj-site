@@ -1,0 +1,143 @@
+<div class="navbar bg-base-100 shadow-sm px-6 sticky top-0 z-50 nav-root">
+
+  <!-- Logo -->
+  <div class="flex-1">
+    <a class="text-lg font-bold tracking-tight nav-logo" href="/raj-site">
+      Ranjan <span class="text-primary">Cost & Accounting</span>
+    </a>
+  </div>
+
+  <!-- Desktop Nav -->
+  <div class="hidden lg:flex flex-none items-center gap-1">
+    <ul class="menu menu-horizontal px-1 font-medium">
+      <li><a href="/raj-site" class="rounded-lg nav-link">Home</a></li>
+      <li><a href="/raj-site/about" class="rounded-lg nav-link">About Us</a></li>
+      <li><a href="/raj-site/contact" class="rounded-lg nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <div class="lg:hidden flex-none">
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square hamburger-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box shadow-md w-56 p-2 mt-2 z-50 font-medium mobile-menu">
+        <li><a href="/raj-site" class="mobile-link">Home</a></li>
+        <li><a href="/raj-site/about" class="mobile-link">About Us</a></li>
+        <li><a href="/raj-site/contact" class="mobile-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* ── Scroll-aware navbar ── */
+  .nav-root {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+
+  .nav-root.scrolled {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ── Logo hover ── */
+  .nav-logo {
+    transition: opacity 0.2s ease;
+    display: inline-block;
+  }
+
+  .nav-logo:hover {
+    opacity: 0.8;
+  }
+
+  /* ── Desktop nav links — sliding underline ── */
+  .nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background: oklch(var(--p)); /* DaisyUI primary */
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  /* ── Hamburger button spin on open ── */
+  .hamburger-btn {
+    transition: transform 0.2s ease;
+  }
+
+  .hamburger-btn:active {
+    transform: rotate(90deg);
+  }
+
+  /* ── Mobile menu slide-in ── */
+  @keyframes menuSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-menu {
+    animation: menuSlideIn 0.2s ease both;
+  }
+
+  .mobile-link {
+    transition: padding-left 0.2s ease;
+  }
+
+  .mobile-link:hover {
+    padding-left: 1.25rem !important;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after,
+    .nav-root,
+    .nav-logo,
+    .hamburger-btn,
+    .mobile-menu,
+    .mobile-link {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Scroll shadow
+  const nav = document.querySelector('.nav-root');
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Active link highlight
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    if (link.getAttribute('href') === window.location.pathname) {
+      link.classList.add('active');
+    }
+  });
+</script>

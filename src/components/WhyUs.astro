@@ -1,0 +1,62 @@
+---
+import WhyUsImage from '../assets/why-us.jpg'
+---
+<section class="py-20 px-4 bg-base-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Value Props -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Header -->
+        <div>
+          <h2 class="text-4xl font-bold mb-3">Why Choose Us?</h2>
+          <p class="text-base-content/60 text-lg">We go beyond the numbers — we’re a financial partner who actually understands your business.</p>
+        </div>
+
+        <!-- DaisyUI List -->
+        <ul class="list bg-base-200">
+
+          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+            <div class="list-col-grow">
+              <div class="font-semibold text-base mb-1">Deep Industry Expertise</div>
+              <div class="text-sm text-base-content/65">We bring hands-on experience across manufacturing, retail, services, and more — we understand your industry’s financial nuances from day one.</div>
+            </div>
+          </li>
+
+          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+            <div class="list-col-grow">
+              <div class="font-semibold text-base mb-1">Smart Cost Efficiency</div>
+              <div class="text-sm text-base-content/65">Partnering with us typically costs much lower than an in-house team — without ever compromising on accuracy or service quality.</div>
+            </div>
+          </li>
+
+          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+            <div class="list-col-grow">
+              <div class="font-semibold text-base mb-1">Reliable & Timely Reports</div>
+              <div class="text-sm text-base-content/65">You’ll always have up-to-date, accurate financial reports — giving you the clarity and confidence to make decisions fast.</div>
+            </div>
+          </li>
+
+          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 bg-base-100">
+            <div class="list-col-grow">
+              <div class="font-semibold text-base mb-1">A Dedicated Partner</div>
+              <div class="text-sm text-base-content/65">No call centers, no runaround. You get a dedicated accountant who knows your business and is just a message or call away.</div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="hidden lg:flex items-center justify-center">
+        <img
+          src={WhyUsImage.src}
+          alt="Why choose us"
+          class="rounded-box object-cover w-full h-[560px] shadow-md"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
