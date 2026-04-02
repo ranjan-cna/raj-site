@@ -7,6 +7,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
-    site: "https://vaperdev.github.io",
+    site: "https://ranjan-cna.github.io",
     base: "/raj-site"
 });
