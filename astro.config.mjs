@@ -7,6 +7,10 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
-    site: "https://ranjan-cna.github.io",
-    base: "/raj-site"
+    adapter: {
+        name: 'astro:static',
+        options: {
+            out: 'dist',
+        },
+    },
 });
