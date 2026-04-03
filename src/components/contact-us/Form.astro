@@ -137,4 +137,11 @@
         callTimeField.style.display = isPhone ? "block" : "none";
         callTimeSelect.required = isPhone;
     });
+    const params = new URLSearchParams(window.location.search);
+    const selectedValue = params.get('select'); // gets "banana"
+
+    if (selectedValue) {
+        const select = document.getElementById('service');
+        select.value = selectedValue; // auto-selects
+    }
 </script>

@@ -1,8 +1,60 @@
-<section class="py-20 px-4 bg-base-200">
+<style>
+  .how-it-works {
+    --item-transition: 0.22s ease;
+  }
+
+  .how-it-works .section-header {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .how-it-works .timeline-item {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .how-it-works.visible .section-header {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .how-it-works.visible .timeline-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+  .how-it-works.visible .timeline-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  .how-it-works.visible .timeline-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+  .how-it-works.visible .timeline-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+
+  .step-card {
+    transition: transform var(--item-transition);
+    cursor: default;
+  }
+
+  .step-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .step-card:hover h3 {
+    color: oklch(var(--p));
+    transition: color var(--item-transition);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .how-it-works .section-header,
+    .how-it-works .timeline-item,
+    .step-card {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<section class="how-it-works py-20 px-4 bg-base-200">
   <div class="max-w-4xl mx-auto">
 
     <!-- Header -->
-    <div class="text-center mb-16">
+    <div class="section-header text-center mb-16">
       <h2 class="text-4xl font-bold mb-4">How It Works</h2>
       <p class="text-base-content/60 text-lg">Getting started is simple — four steps to smooth, stress-free accounting.</p>
     </div>
@@ -10,21 +62,23 @@
     <!-- Timeline -->
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
 
-      <li>
+      <li class="timeline-item">
         <div class="timeline-middle text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/>
           </svg>
         </div>
         <div class="timeline-start mb-12 md:text-end md:pr-10">
-          <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 01</p>
-          <h3 class="text-xl font-bold mb-2">Free Consultation</h3>
-          <p class="text-sm text-base-content/65 max-w-xs md:ml-auto">Reach out for a no-obligation chat. We’ll learn about your business, your current financial setup, and what you want to achieve.</p>
+          <div class="step-card">
+            <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 01</p>
+            <h3 class="text-xl font-bold mb-2">Free Consultation</h3>
+            <p class="text-sm text-base-content/65 max-w-xs md:ml-auto">Reach out for a no-obligation chat. We'll learn about your business, your current financial setup, and what you want to achieve.</p>
+          </div>
         </div>
         <hr class="bg-primary"/>
       </li>
 
-      <li>
+      <li class="timeline-item">
         <hr class="bg-primary"/>
         <div class="timeline-middle text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
@@ -32,14 +86,16 @@
           </svg>
         </div>
         <div class="timeline-end mb-12 md:pl-10">
-          <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 02</p>
-          <h3 class="text-xl font-bold mb-2">Tailored Proposal</h3>
-          <p class="text-sm text-base-content/65 max-w-xs">We craft a service plan and pricing designed just for you — no cookie-cutter packages, only what fits your needs.</p>
+          <div class="step-card">
+            <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 02</p>
+            <h3 class="text-xl font-bold mb-2">Tailored Proposal</h3>
+            <p class="text-sm text-base-content/65 max-w-xs">We craft a service plan and pricing designed just for you — no cookie-cutter packages, only what fits your needs.</p>
+          </div>
         </div>
         <hr class="bg-primary"/>
       </li>
 
-      <li>
+      <li class="timeline-item">
         <hr class="bg-primary"/>
         <div class="timeline-middle text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
@@ -47,14 +103,16 @@
           </svg>
         </div>
         <div class="timeline-start mb-12 md:text-end md:pr-10">
-          <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 03</p>
-          <h3 class="text-xl font-bold mb-2">Smooth Onboarding</h3>
-          <p class="text-sm text-base-content/65 max-w-xs md:ml-auto">We review your financial data, set up workflows, and transition everything seamlessly — keeping disruption to your business minimal.</p>
+          <div class="step-card">
+            <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 03</p>
+            <h3 class="text-xl font-bold mb-2">Smooth Onboarding</h3>
+            <p class="text-sm text-base-content/65 max-w-xs md:ml-auto">We review your financial data, set up workflows, and transition everything seamlessly — keeping disruption to your business minimal.</p>
+          </div>
         </div>
         <hr class="bg-primary"/>
       </li>
 
-      <li>
+      <li class="timeline-item">
         <hr class="bg-primary"/>
         <div class="timeline-middle text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6">
@@ -62,12 +120,30 @@
           </svg>
         </div>
         <div class="timeline-end md:pl-10">
-          <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 04</p>
-          <h3 class="text-xl font-bold mb-2">Ongoing Support</h3>
-          <p class="text-sm text-base-content/65 max-w-x">Sit back and focus on your business — we handle everything from here, with regular updates so you know what's happening.</p>
+          <div class="step-card">
+            <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-1">Step 04</p>
+            <h3 class="text-xl font-bold mb-2">Ongoing Support</h3>
+            <p class="text-sm text-base-content/65 max-w-xs">Sit back and focus on your business — we handle everything from here, with regular updates so you know what's happening.</p>
+          </div>
         </div>
       </li>
 
     </ul>
   </div>
 </section>
+
+<script>
+  const section = document.querySelector('.how-it-works');
+  if (section) {
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            section.classList.add('visible');
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+    );
+    observer.observe(section);
+  }
+</script>

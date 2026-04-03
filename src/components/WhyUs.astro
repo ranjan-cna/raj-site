@@ -1,7 +1,71 @@
 ---
 import WhyUsImage from '../assets/why-us.jpg'
 ---
-<section class="py-20 px-4 bg-base-100">
+
+<style>
+  .why-us-section {
+    --item-transition: 0.2s ease;
+  }
+
+  .why-us-section .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .why-us-section.visible .fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .why-us-section.visible .fade-in-up:nth-child(1) { transition-delay: 0s; }
+  .why-us-section.visible .fade-in-up:nth-child(2) { transition-delay: 0.1s; }
+  .why-us-section.visible .fade-in-up:nth-child(3) { transition-delay: 0.2s; }
+  .why-us-section.visible .fade-in-up:nth-child(4) { transition-delay: 0.3s; }
+
+  .why-us-item {
+    transition: transform var(--item-transition), background-color var(--item-transition);
+    cursor: default;
+  }
+
+  .why-us-item:hover {
+    transform: translateX(4px);
+    background-color: oklch(var(--b2)) !important;
+  }
+
+  .why-us-item .item-title {
+    transition: color var(--item-transition);
+  }
+
+  .why-us-item:hover .item-title {
+    color: oklch(var(--p));
+  }
+
+  .why-us-img-wrap {
+    overflow: hidden;
+    border-radius: var(--rounded-box, 1rem);
+  }
+
+  .why-us-img-wrap img {
+    transition: transform 0.4s ease;
+  }
+
+  .why-us-img-wrap:hover img {
+    transform: scale(1.03);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why-us-section .fade-in-up,
+    .why-us-item,
+    .why-us-img-wrap img {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<section class="why-us-section py-20 px-4 bg-base-100">
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -9,38 +73,38 @@ import WhyUsImage from '../assets/why-us.jpg'
       <div class="flex flex-col gap-6">
 
         <!-- Header -->
-        <div>
+        <div class="fade-in-up">
           <h2 class="text-4xl font-bold mb-3">Why Choose Us?</h2>
-          <p class="text-base-content/60 text-lg">We go beyond the numbers — we’re a financial partner who actually understands your business.</p>
+          <p class="text-base-content/60 text-lg">We go beyond the numbers — we're a financial partner who actually understands your business.</p>
         </div>
 
         <!-- DaisyUI List -->
         <ul class="list bg-base-200">
 
-          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+          <li class="why-us-item fade-in-up list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
             <div class="list-col-grow">
-              <div class="font-semibold text-base mb-1">Deep Industry Expertise</div>
-              <div class="text-sm text-base-content/65">We bring hands-on experience across manufacturing, retail, services, and more — we understand your industry’s financial nuances from day one.</div>
+              <div class="item-title font-semibold text-base mb-1">Deep Industry Expertise</div>
+              <div class="text-sm text-base-content/65">We bring hands-on experience across manufacturing, retail, services, and more — we understand your industry's financial nuances from day one.</div>
             </div>
           </li>
 
-          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+          <li class="why-us-item fade-in-up list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
             <div class="list-col-grow">
-              <div class="font-semibold text-base mb-1">Smart Cost Efficiency</div>
+              <div class="item-title font-semibold text-base mb-1">Smart Cost Efficiency</div>
               <div class="text-sm text-base-content/65">Partnering with us typically costs much lower than an in-house team — without ever compromising on accuracy or service quality.</div>
             </div>
           </li>
 
-          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
+          <li class="why-us-item fade-in-up list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 mb-4 bg-base-100">
             <div class="list-col-grow">
-              <div class="font-semibold text-base mb-1">Reliable & Timely Reports</div>
-              <div class="text-sm text-base-content/65">You’ll always have up-to-date, accurate financial reports — giving you the clarity and confidence to make decisions fast.</div>
+              <div class="item-title font-semibold text-base mb-1">Reliable & Timely Reports</div>
+              <div class="text-sm text-base-content/65">You'll always have up-to-date, accurate financial reports — giving you the clarity and confidence to make decisions fast.</div>
             </div>
           </li>
 
-          <li class="list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 bg-base-100">
+          <li class="why-us-item fade-in-up list-row items-start gap-4 py-5 border-l-4 border-primary pl-6 bg-base-100">
             <div class="list-col-grow">
-              <div class="font-semibold text-base mb-1">A Dedicated Partner</div>
+              <div class="item-title font-semibold text-base mb-1">A Dedicated Partner</div>
               <div class="text-sm text-base-content/65">No call centers, no runaround. You get a dedicated accountant who knows your business and is just a message or call away.</div>
             </div>
           </li>
@@ -50,13 +114,32 @@ import WhyUsImage from '../assets/why-us.jpg'
 
       <!-- Right: Image -->
       <div class="hidden lg:flex items-center justify-center">
-        <img
-          src={WhyUsImage.src}
-          alt="Why choose us"
-          class="rounded-box object-cover w-full h-[560px] shadow-md"
-        />
+        <div class="why-us-img-wrap w-full shadow-md">
+          <img
+              src={WhyUsImage.src}
+              alt="Why choose us"
+              class="object-cover w-full h-[560px]"
+          />
+        </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<script>
+  const section = document.querySelector('.why-us-section');
+  if (section) {
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            section.classList.add('visible');
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.15 }
+    );
+    observer.bind = observer.observe;
+    observer.bind(section);
+  }
+</script>

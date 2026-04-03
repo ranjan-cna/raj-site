@@ -1,0 +1,68 @@
+---
+interface Props {
+    title?: string;
+    price?: string | number;
+    selectOption?: string;
+}
+
+const { title = "Acme", price = "50", selectOption = "Financial Accounting" } = Astro.props;
+---
+
+<div class="price-card">
+    <h2 class="plan-title">{title}</h2>
+
+    <ul class="features">
+        <slot />
+    </ul>
+
+    <hr class="divider" />
+
+    <div class="price-row">
+        <span class="currency">₹</span>
+        <span class="amount">{price}</span>
+        <span class="period">/hour</span>
+    </div>
+
+    <button class="btn btn-primary"><a href={`/contact?select=${selectOption}`}>Get started</a></button>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap');
+
+    .price-card {
+        font-family: 'DM Sans', sans-serif;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 320px;
+        position: relative;
+        overflow: hidden;
+    }
+    .price-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: #1D9E75;
+    }
+    .plan-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 26px;
+        font-weight: 400;
+        margin: 0 0 1rem;
+    }
+    .features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem;
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.7;
+    }
+    .divider { border: none; border-top: 1px solid #e5e7eb; margin: 1.25rem 0; }
+    .price-row { display: flex; align-items: baseline; gap: 4px; }
+    .currency { font-size: 18px; font-weight: 500; margin-top: 4px; }
+    .amount { font-family: 'DM Serif Display', serif; font-size: 48px; line-height: 1; }
+    .period { font-size: 14px; color: #6b7280; margin-left: 2px; }
+</style>

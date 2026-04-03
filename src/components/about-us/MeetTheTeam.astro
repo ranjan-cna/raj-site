@@ -1,50 +1,124 @@
-<section class="py-20 px-4 bg-base-200">
+<style>
+    .founder-section {
+        --item-transition: 0.22s ease;
+    }
+
+    .founder-section .fade-in-up {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .founder-section.visible .fade-in-up:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+    .founder-section.visible .fade-in-up:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+
+    .founder-card {
+        transition: transform var(--item-transition), box-shadow var(--item-transition);
+    }
+
+    .founder-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px oklch(0 0 0 / 0.08);
+    }
+
+    .founder-card figure {
+        overflow: hidden;
+    }
+
+    .founder-card figure img {
+        transition: transform 0.4s ease;
+    }
+
+    .founder-card:hover figure img {
+        transform: scale(1.04);
+    }
+
+    .founder-badge {
+        transition: border-color var(--item-transition), color var(--item-transition);
+    }
+
+    .founder-badge:hover {
+        border-color: oklch(var(--p));
+        color: oklch(var(--p));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .founder-section .fade-in-up,
+        .founder-card,
+        .founder-card figure img,
+        .founder-badge {
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+</style>
+
+<section class="founder-section py-20 px-4 bg-base-200">
     <div class="max-w-4xl mx-auto">
 
         <!-- Header -->
-        <div class="text-center mb-12">
+        <div class="fade-in-up text-center mb-12">
             <p class="text-xs font-semibold tracking-widest text-primary uppercase mb-3">The Person Behind It</p>
             <h2 class="text-4xl font-bold">Meet the Founder</h2>
         </div>
 
         <!-- Card -->
-        <div class="card bg-base-100 shadow-sm lg:card-side max-w-3xl mx-auto">
+        <div class="fade-in-up">
+            <div class="founder-card card bg-base-100 shadow-sm lg:card-side max-w-3xl mx-auto">
 
-            <!-- Image -->
-            <figure class="lg:w-64 shrink-0">
-                <img
-                        alt="Founder of Ranjan Cost & Accounting"
-                        class="w-full h-64 lg:h-full object-cover"
-                />
-            </figure>
+                <!-- Image -->
+                <figure class="lg:w-64 shrink-0">
+                    <img
+                            alt="Founder of Ranjan Cost & Accounting"
+                            class="w-full h-64 lg:h-full object-cover"
+                    />
+                </figure>
 
-            <!-- Content -->
-            <div class="card-body justify-center gap-4">
+                <!-- Content -->
+                <div class="card-body justify-center gap-4">
 
-                <!-- Name & Title -->
-                <div>
-                    <h3 class="text-2xl font-bold">Mr. Ranjan Kumar Thakur</h3>
-                    <p class="text-primary font-semibold text-sm mt-1">Founder & Principal Accountant</p>
+                    <!-- Name & Title -->
+                    <div>
+                        <h3 class="text-2xl font-bold">Mr. Ranjan Kumar Thakur</h3>
+                        <p class="text-primary font-semibold text-sm mt-1">Founder & Principal Accountant</p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-10 h-[2px] bg-primary"></div>
+
+                    <!-- Bio -->
+                    <p class="text-base-content/70 text-sm leading-relaxed">
+                        With over two decades of experience in global finance — including senior roles at Genpact — I founded Ranjan Cost & Accounting to bring enterprise-level financial expertise to businesses of every size. I believe every business deserves accurate books, timely reports, and an accountant who genuinely cares.
+                    </p>
+
+                    <!-- Credentials / Tags -->
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="founder-badge badge badge-outline badge-sm">20+ Years Experience</span>
+                        <span class="founder-badge badge badge-outline badge-sm">Ex-Genpact</span>
+                        <span class="founder-badge badge badge-outline badge-sm">GST Specialist</span>
+                        <span class="founder-badge badge badge-outline badge-sm">Cost Accounting</span>
+                    </div>
+
                 </div>
-
-                <!-- Divider -->
-                <div class="w-10 h-[2px] bg-primary"></div>
-
-                <!-- Bio -->
-                <p class="text-base-content/70 text-sm leading-relaxed">
-                    With over two decades of experience in global finance — including senior roles at Genpact — I founded Ranjan Cost & Accounting to bring enterprise-level financial expertise to businesses of every size. I believe every business deserves accurate books, timely reports, and an accountant who genuinely cares.
-                </p>
-
-                <!-- Credentials / Tags -->
-                <div class="flex flex-wrap gap-2 mt-1">
-                    <span class="badge badge-outline badge-sm">20+ Years Experience</span>
-                    <span class="badge badge-outline badge-sm">Ex-Genpact</span>
-                    <span class="badge badge-outline badge-sm">GST Specialist</span>
-                    <span class="badge badge-outline badge-sm">Cost Accounting</span>
-                </div>
-
             </div>
         </div>
 
     </div>
 </section>
+
+<script>
+    const section = document.querySelector('.founder-section');
+    if (section) {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    section.classList.add('visible');
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+        observer.observe(section);
+    }
+</script>
